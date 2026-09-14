@@ -1,4 +1,3 @@
-```groovy
 pipeline {
 
     agent any
@@ -25,7 +24,7 @@ pipeline {
     }
 
     environment {
-        AWS_DEFAULT_REGION = 'eu-west-1'
+        AWS_DEFAULT_REGION = 'ap-south-1'
     }
 
     stages {
@@ -251,4 +250,4 @@ pipeline {
         }
     }
 }
-```
+
