@@ -1,14 +1,14 @@
 variable "aws_region" {
   description = "AWS region"
   type        = string
-  default     = "eu-west-1"
+  default     = "ap-south-1"
 }
 
 
 variable "domain_name" {
   description = "Domain name for Route 53 hosted zone"
   type        = string
-  default = "aptupdate.store"
+  default = "bhagvat.shop"
 }
 
 
