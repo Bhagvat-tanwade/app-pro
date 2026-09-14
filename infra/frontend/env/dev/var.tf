@@ -1,14 +1,14 @@
 variable "aws_region" {
   description = "AWS region"
   type        = string
-  default     = "eu-north-1"
+  default     = "ap-south-1"
 }
 
 
 variable "domain_name" {
   description = "Domain name to use as the S3 bucket name"
   type        = string
-  default = "aptupdate.store"
+  default = "bhagvat.shop"
 }
 
 
