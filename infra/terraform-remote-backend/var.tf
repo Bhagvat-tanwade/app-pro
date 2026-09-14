@@ -9,7 +9,7 @@ variable "aws_region" {
 variable "state_bucket_name" {
   description = "Name of the S3 bucket for Terraform state"
   type        = string
-  default     = "terraform-state-bucket-cbz-kharadi-10"
+  default     = "bhagvat-terraform-state-2026-09"
 }
 
 variable "dynamodb_table_name" {
