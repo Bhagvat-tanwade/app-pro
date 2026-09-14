@@ -39,7 +39,7 @@ pipeline {
                         cat > backend.tf <<EOF
 terraform {
   backend "s3" {
-    bucket         = "terraform-state-bucket-cbz-kharadi-04"
+    bucket         = "bhagvat-terraform-state-2026-09 "
     key            = "global/${params.ENVIRONMENT}/terraform-global.tfstate"
     region         = "ap-south-1"
     encrypt        = true
