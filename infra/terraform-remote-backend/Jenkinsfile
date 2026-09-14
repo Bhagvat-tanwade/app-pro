@@ -1,0 +1,109 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_DEFAULT_REGION = 'ap-south-1'
+        AWS_REGION        = 'ap-south-1'
+        AWS_CREDENTIAL_ID = 'aws-credentials'
+    }
+
+    stages {
+
+        stage('CHECKOUT') {
+            steps {
+                git branch: 'dev',
+                    url: 'https://github.com/aditya-mohod/app-pro.git'
+            }
+        }
+
+        stage('AWS AUTH CHECK') {
+            steps {
+                withCredentials([
+                    [$class: 'AmazonWebServicesCredentialsBinding',
+                     credentialsId: "${AWS_CREDENTIAL_ID}"]
+                ]) {
+                    sh '''
+                        echo "Checking AWS authentication..."
+                        aws sts get-caller-identity
+                    '''
+                }
+            }
+        }
+
+        stage('TERRAFORM INIT') {
+            steps {
+                dir('infra/terraform-remote-backend') {
+                    withCredentials([
+                        [$class: 'AmazonWebServicesCredentialsBinding',
+                         credentialsId: "${AWS_CREDENTIAL_ID}"]
+                    ]) {
+                        sh '''
+                            terraform init
+                        '''
+                    }
+                }
+            }
+        }
+
+        stage('TERRAFORM VALIDATE') {
+            steps {
+                dir('infra/terraform-remote-backend') {
+                    sh '''
+                        terraform validate
+                    '''
+                }
+            }
+        }
+
+        stage('TERRAFORM PLAN') {
+            steps {
+                dir('infra/terraform-remote-backend') {
+                    withCredentials([
+                        [$class: 'AmazonWebServicesCredentialsBinding',
+                         credentialsId: "${AWS_CREDENTIAL_ID}"]
+                    ]) {
+                        sh '''
+                            terraform plan
+                        '''
+                    }
+                }
+            }
+        }
+
+        stage('APPROVAL') {
+            steps {
+                input message: 'Do you want to create the Terraform remote backend?',
+                      ok: 'YES, APPLY'
+            }
+        }
+
+        stage('TERRAFORM APPLY') {
+            steps {
+                dir('infra/terraform-remote-backend') {
+                    withCredentials([
+                        [$class: 'AmazonWebServicesCredentialsBinding',
+                         credentialsId: "${AWS_CREDENTIAL_ID}"]
+                    ]) {
+                        sh '''
+                            terraform apply -auto-approve
+                        '''
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Terraform remote backend created successfully!'
+        }
+
+        failure {
+            echo 'Pipeline failed. Check the console output.'
+        }
+
+        always {
+            echo 'Pipeline execution completed.'
+        }
+    }
+}
