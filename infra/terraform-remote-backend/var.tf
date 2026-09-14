@@ -3,13 +3,13 @@
 variable "aws_region" {
   description = "AWS region for the backend infrastructure"
   type        = string
-  default     = "us-west-2"
+  default     = "ap-south-1"
 }
 
 variable "state_bucket_name" {
   description = "Name of the S3 bucket for Terraform state"
   type        = string
-  default     = "terraform-state-bucket-cbz-kharadi-04"
+  default     = "terraform-state-bucket-cbz-kharadi-10"
 }
 
 variable "dynamodb_table_name" {
