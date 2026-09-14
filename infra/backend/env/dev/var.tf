@@ -3,7 +3,7 @@
 variable "aws_region" {
   description = "AWS region"
   type        = string
-  default     = "eu-north-1"
+  default     = "ap-south-1"
 }
 
 variable "vpc_name" {
@@ -22,9 +22,9 @@ variable "public_subnet_cidrs" {
   description = "Map of availability zones to public subnet CIDR blocks"
   type        = map(string)
   default = {
-    "eu-north-1a" = "10.2.1.0/24"
-    "eu-north-1b" = "10.2.2.0/24"
-    "eu-north-1c" = "10.2.3.0/24"
+    "ap-south-1a" = "10.2.1.0/24"
+    "ap-south-1b" = "10.2.2.0/24"
+    "ap-south-1c" = "10.2.3.0/24"
   }
 }
 
@@ -32,9 +32,9 @@ variable "private_subnet_cidrs" {
   description = "Map of availability zones to private subnet CIDR blocks"
   type        = map(string)
   default = {
-    "eu-north-1a" = "10.2.10.0/24"
-    "eu-north-1b" = "10.2.20.0/24"
-    "eu-north-1c" = "10.2.30.0/24"
+    "ap-south-1a" = "10.2.10.0/24"
+    "ap-south-1b" = "10.2.20.0/24"
+    "ap-south-1c" = "10.2.30.0/24"
   }
 }
 
