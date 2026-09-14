@@ -22,7 +22,7 @@ pipeline {
 
         stage('PULL') {
             steps {
-                git branch: 'dev', url: 'https://github.com/jambhulkarcloudblitz-alt/app-pro.git'
+                git branch: 'dev', url: 'https://github.com/Bhagvat-tanwade/app-pro.git'
             }
         }
 
@@ -52,7 +52,7 @@ pipeline {
         //             backend "s3" {
         //                 bucket         = "terraform-state-bucket-cbz-kharadi-4"
         //                 key            = "global/${params.ENVIRONMENT}/terraform-global.tfstate"
-        //                 region         = "eu-west-1"
+        //                 region         = "ap-south-1"
         //                 encrypt        = true
         //                 dynamodb_table = "terraform-state-lock"
         //                 use_lockfile   = true
