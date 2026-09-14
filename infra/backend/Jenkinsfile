@@ -93,7 +93,7 @@
 //         //                 cat > backend.tf << EOF
 //         //             terraform {
 //         //             backend "s3" {
-//         //                 bucket         = "terraform-state-bucket-cbz-kharadi-4"
+//         //                 bucket         = "bhagvat-terraform-state-2026-09"
 //         //                 key            = "backend/${params.ENVIRONMENT}/terraform-global.tfstate"
 //         //                 region         = "ap-south-1"
 //         //                 encrypt        = true
@@ -126,7 +126,7 @@
 //                 cat > backend.tf <<EOF
 //                 terraform {
 //                   backend "s3" {
-//                     bucket         = "terraform-state-bucket-cbz-kharadi-4"
+//                     bucket         = "bhagvat-terraform-state-2026-09"
 //                     key            = "backend/${ENVIRONMENT}/terraform-global.tfstate"
 //                     region         = "ap-south-1"
 //                     encrypt        = true
@@ -387,7 +387,7 @@ pipeline {
         // Get Terraform code from GitHub
         stage('PULL') {
             steps {
-                git branch: 'dev', url: 'https://github.com/jambhulkarcloudblitz-alt/app-pro.git'
+                git branch: 'dev', url: 'https://github.com/Bhagvat-tanwade/app-pro.git'
             }
         }
 
@@ -407,7 +407,7 @@ pipeline {
                         printf '%s\\n' \\
                           'terraform {' \\
                           '  backend "s3" {' \\
-                          '    bucket       = "terraform-state-bucket-cbz-kharadi-04"' \\
+                          '    bucket       = "bhagvat-terraform-state-2026-09"' \\
                           '    key          = "backend/${ENVIRONMENT}/terraform-global.tfstate"' \\
                           '    region       = "eu-west-1"' \\
                           '    encrypt      = true' \\
