@@ -5,7 +5,7 @@ pipeline {
     environment {
         AWS_REGION = 'eu-north-1'
         EKS_CLUSTER_NAME = 'backend-dev-cluster'
-        ECR_REGISTRY = '725166342186.dkr.ecr.eu-north-1.amazonaws.com/easy-backend'
+        ECR_REGISTRY = '056176270848.dkr.ecr.ap-south-1.amazonaws.com/easy-backend'
         IMAGE_NAME = 'easy-backend'
     }
 
@@ -14,7 +14,7 @@ pipeline {
         stage('PULL') {
             steps {
                 git branch: 'dev',
-                    url: 'https://github.com/jambhulkarcloudblitz-alt/app-pro.git'
+                    url: 'https://github.com/Bhagvat-tanwade/app-pro.git'
             }
         }
 
@@ -42,7 +42,7 @@ pipeline {
         stage ('FRONTEND-BUILD-DOCKERFILE') {
             steps {
                 sh '''cd app/backend/
-                    docker build -t 725166342186.dkr.ecr.eu-north-1.amazonaws.com/easy-backend .'''
+                    docker build -t 056176270848.dkr.ecr.ap-south-1.amazonaws.com/easy-backend:latest .'''
             }
         }
 
@@ -56,10 +56,10 @@ pipeline {
                         
 
             
-                        aws ecr get-login-password --region eu-north-1 | 
+                        aws ecr get-login-password --region ap-south-1 | 
                         docker login --username AWS --password-stdin 725166342186.dkr.ecr.eu-north-1.amazonaws.com
 
-                        docker push 725166342186.dkr.ecr.eu-north-1.amazonaws.com/easy-backend
+                        docker push 056176270848.dkr.ecr.ap-south-1.amazonaws.com/easy-backend:latest
                     '''
                 }
             }
