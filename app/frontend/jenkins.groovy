@@ -4,8 +4,8 @@ pipeline {
     agent any
 
     environment {
-        AWS_REGION = 'eu-north-1'
-        S3_BUCKET = 'aptupdate.store'
+        AWS_REGION = 'ap-south-1'
+        S3_BUCKET = 'bhagvat.shop'
     }
 
     stages {
@@ -13,7 +13,7 @@ pipeline {
         stage('PULL') {
             steps {
                 git branch: 'dev',
-                    url: 'https://github.com/jambhulkarcloudblitz-alt/app-pro.git'
+                    url: 'https://github.com/Bhagvat-tanwade/app-pro.git'
             }
         }
 
