@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-        AWS_REGION = 'eu-north-1'
+        AWS_REGION = 'ap-south-1'
         EKS_CLUSTER_NAME = 'backend-dev-cluster'
     }
 
@@ -12,7 +12,7 @@ pipeline {
         stage('PULL') {
             steps {
                 git branch: 'dev',
-                    url: 'https://github.com/jambhulkarcloudblitz-alt/app-pro.git'
+                    url: 'https://github.com/Bhagvat-tanwade/app-pro.git'
             }
         }
 
