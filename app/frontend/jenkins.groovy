@@ -5,7 +5,7 @@ pipeline {
 
     environment {
         AWS_REGION = 'ap-south-1'
-        S3_BUCKET = 'bhagvat.shop'
+        S3_BUCKET = 'bhagvat-shop-2026-bhagvat'
     }
 
     stages {
