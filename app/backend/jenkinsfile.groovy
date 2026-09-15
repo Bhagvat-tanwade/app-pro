@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-        AWS_REGION = 'eu-north-1'
+        AWS_REGION = 'ap-south-1'
         EKS_CLUSTER_NAME = 'backend-dev-cluster'
         ECR_REGISTRY = '056176270848.dkr.ecr.ap-south-1.amazonaws.com/easy-backend'
         IMAGE_NAME = 'easy-backend'
@@ -57,7 +57,7 @@ pipeline {
 
             
                         aws ecr get-login-password --region ap-south-1 | 
-                        docker login --username AWS --password-stdin 725166342186.dkr.ecr.eu-north-1.amazonaws.com
+                        docker login --username AWS --password-stdin 056176270848.dkr.ecr.ap-south-1.amazonaws.com
 
                         docker push 056176270848.dkr.ecr.ap-south-1.amazonaws.com/easy-backend:latest
                     '''
